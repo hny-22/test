@@ -1,0 +1,103 @@
+@charset "UTF-8";
+
+body    {background-color: #FFFFFF; color: black;text-align: center;}
+h1      {font-size: 30px}
+h3      {font-size: 20px}
+h4      {border:solid 2px skyblue; font-size: 20px}
+p       {font-size: 15px}
+
+.gray       {color: #6495DE;}
+.back-gray  {background-color: #778899}
+.white      {color: #FFFFFF}
+.back-white {background-color: #FFFFFF;}
+.black      {color: #696969}
+.back-brue  {background-color: #87CEFA;}
+
+iframe {
+  border: 0px;
+  width: 100%;
+}
+.sidebar {
+  width: 100px;
+  height: 300px;
+  text-align: right;
+  margin-left: 10px;
+} 
+.content {
+  width: 250px;
+  height: 300px;
+  text-align: center;
+}
+.centre {
+  text-align: center;
+}
+.right {
+  text-align: right;
+}
+
+/* ボタンのスタイル */
+.menu-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  color: #6495DE;
+}
+/* メニューのスタイル */
+.menu {
+  display: none; /* 初期状態で非表示 */
+  position: absolute;
+  top: 50px;
+  right: 0;
+  padding: 10px;
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+/* メニュー項目のスタイル */
+.menu-item {
+  padding: 8px 16px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #696969;
+  display: block;
+}
+.menu-item:hover {
+  background-color: #778899s;
+}
+.tablemenu {
+  border: 1px solid rgb(160 160 160);
+  padding: 8px 10px;
+}
+.space {
+  margin-top: 500px;
+}
+a {
+  text-decoration:none;
+  color: #FFFFFF;
+}
+.midashi {
+  background-color: #5F9EA0;
+  color: #FFFFFF;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 装飾 */
+button {
+  color: #fff;
+  background: #5876a3;
+  padding: 10px 30px;
+  display: inline-block;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
