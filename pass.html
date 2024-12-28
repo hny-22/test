@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<meta charset="UTF-8">
+	<title>パスワード入力</title>
+	<link rel="style" href="style.css">
+	<script type = "text/javascript">
+function matchPass() {
+var inpass = document.forms[ "pass" ].elements[ "inpass" ].value;
+var validpass = "tamagohage";
+if( inpass == validpass ) location.href = "tmg.html";
+else alert( "パスワードが間違っています。" );}
+</script>
+</head>
+<body>
+<form name = "pass">
+<div>
+<input type = "text" value = "" name = "inpass">
+<input type = "button" value = "認証" onclick = "matchPass();">
+</div>
+</form>
+</body>
+</html>
