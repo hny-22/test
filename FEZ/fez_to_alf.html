@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screen Keyboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .output {
+            font-size: 24px;
+            margin: 20px 0;
+        }
+
+        .output span {
+            font-weight: bold;
+        }
+
+        .keyboard {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px 0;
+            margin-top: auto;
+        }
+
+        .key {
+            margin: 5px;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            image-rendering: pixelated;
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>FEZ文字からアルファベット</h1>
+    <div class="output">
+        結果  <span id="output"></span>
+    </div>
+    <div class="keyboard" id="keyboard"></div>
+
+    <script>
+        const keyMapping = [
+            ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'backspace'],
+            ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
+            ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
+            ['z', 'x', 'c', 'v', 'b', 'n', 'm', ' ']
+        ];
+
+        const imagePath = {
+            '0': 'character/0.png',
+            '1': 'character/1.png',
+            '2': 'character/2.png',
+            '3': 'character/3.png',
+            '4': 'character/4.png',
+            '5': 'character/5.png',
+            '6': 'character/6.png',
+            '7': 'character/7.png',
+            '8': 'character/8.png',
+            '9': 'character/9.png',
+            '10': 'character/10.png',
+            'backspace': 'character/bs.png',
+            'q': 'character/q.png',
+            'w': 'character/w.png',
+            'e': 'character/e.png',
+            'r': 'character/r.png',
+            't': 'character/t.png',
+            'y': 'character/l.png',
+            'u': 'character/u.png',
+            'i': 'character/i.png',
+            'o': 'character/o.png',
+            'p': 'character/p.png',
+            'a': 'character/a.png',
+            's': 'character/s.png',
+            'd': 'character/d.png',
+            'f': 'character/f.png',
+            'g': 'character/g.png',
+            'h': 'character/h.png',
+            'j': 'character/j.png',
+            'k': 'character/k.png',
+            'l': 'character/l.png',
+            'z': 'character/z.png',
+            'x': 'character/q.png',
+            'c': 'character/c.png',
+            'v': 'character/u.png',
+            'b': 'character/b.png',
+            'n': 'character/n.png',
+            'm': 'character/m.png',
+            ' ': 'character/space.png',
+        };
+
+        const keyboardContainer = document.getElementById('keyboard');
+        const outputElement = document.getElementById('output');
+        let outputText = '';
+
+        // Generate keyboard buttons
+        keyMapping.forEach(row => {
+            const rowDiv = document.createElement('div');
+            rowDiv.classList.add('row');
+            row.forEach(key => {
+                const button = document.createElement('img');
+                button.setAttribute('src', imagePath[key]);
+                button.setAttribute('alt', key);
+                button.classList.add('key');
+                button.addEventListener('click', () => {
+                    if (key === 'backspace') {
+                        outputText = outputText.slice(0, -1);
+                    } else {
+                        outputText += key;
+                    }
+                    outputElement.textContent = outputText;
+                });
+                rowDiv.appendChild(button);
+            });
+            keyboardContainer.appendChild(rowDiv);
+        });
+    </script>
+</body>
+</html>

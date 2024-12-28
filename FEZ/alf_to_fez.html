@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アルファベットからFEZ文字変換器</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        #output {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+        .column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        img {
+            width: 50px;
+            height: 50px;
+            image-rendering: pixelated; /* Ensures sharp display of low-resolution images */
+            image-rendering: crisp-edges; /* Fallback for some browsers */
+        }
+    </style>
+</head>
+<body>
+    <h1>Character to Image Converter</h1>
+    <form id="convertForm">
+        <label for="inputText">Enter text:</label>
+        <textarea id="inputText" rows="5" required></textarea>
+        <button type="button" id="convertButton">Convert</button>
+    </form>
+    <div id="output"></div>
+
+    <script>
+        document.getElementById('convertButton').addEventListener('click', () => {
+            const inputText = document.getElementById('inputText').value.toLowerCase();
+            const outputDiv = document.getElementById('output');
+            outputDiv.innerHTML = '';
+
+            const lines = inputText.split('\\n');
+            const maxLength = Math.max(...lines.map(line => line.length));
+
+            for (let i = 0; i < maxLength; i++) {
+                const columnDiv = document.createElement('div');
+                columnDiv.className = 'column';
+
+                for (const line of lines) {
+                    let char = line[i] || ' ';
+                    let imageName;
+
+                    if (char >= 'a' && char <= 'z') {
+                        if (char === 'u' || char === 'v') {
+                            imageName = 'character/u.png';
+                        } else if (char === 'q' || char === 'x') {
+                            imageName = 'character/q.png';
+                        } else if (char === 'l' || char === 'y') {
+                            imageName = 'character/l.png';
+                        } else {
+                            imageName = `character/${char}.png`;
+                        }
+                    } else if (char >= '0' && char <= '9') {
+                        imageName = `character/${char}.png`;
+                    } else if (char === ' ') {
+                        imageName = 'character/space.png';
+                    } else {
+                        imageName = 'character/space.png';
+                    }
+
+                    const img = document.createElement('img');
+                    img.src = imageName;
+                    img.alt = char;
+                    columnDiv.appendChild(img);
+                }
+
+                outputDiv.appendChild(columnDiv);
+            }
+        });
+    </script>
+</body>
+</html>
